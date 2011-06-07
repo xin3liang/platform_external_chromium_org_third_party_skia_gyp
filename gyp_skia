@@ -17,6 +17,19 @@
 # This script is a wrapper which invokes gyp with the correct --depth argument,
 # and supports the automatic regeneration of build files if all.gyp is 
 # changed (Linux-only).
+#
+
+#
+#
+#
+#
+#
+# THIS IS DEPRECATED IN FAVOR OF trunk/gyp_skia !!!
+# Questions? Contact epoger@google.com
+#
+#
+#
+#
 
 import glob
 import os
