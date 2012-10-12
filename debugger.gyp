@@ -47,8 +47,8 @@
       }],
       [ 'skia_os == "win"', {
         'variables': {
-          # TODO: location of systemwide Qt on Win?
-          'qt_sdk%': 'C:/Qt/4.6.4/',
+          # This is the default location for the version of Qt current on 10/11/12
+          'qt_sdk%': 'C:/Qt/4.8.3/',
         },
         'qt_sdk': '<(qt_sdk)',
         'qt_moc%': '<(qt_sdk)/bin/moc',
@@ -61,7 +61,7 @@
         'qt_libs': [
           '<(qt_sdk)/lib/QtCore4.lib',
           '<(qt_sdk)/lib/QtGui4.lib',
-          '<(qt_sdk)/lib/QtOpenGL.lib',
+          '<(qt_sdk)/lib/QtOpenGL4.lib',
         ],
       }],
     ],
@@ -118,12 +118,9 @@
         '<(moc_src_dir)/moc_SkGLWidget.cpp',
       ],
       'dependencies': [
-        'core.gyp:core',
+        'skia_base_libs.gyp:skia_base_libs',
         'images.gyp:images',
-        'ports.gyp:ports',
         'effects.gyp:effects',
-        'gpu.gyp:gr',
-        'gpu.gyp:skgr',
         'debugger_mocs',
       ],
       'link_settings': {
