@@ -9,6 +9,7 @@
   'variables': {
     'gr_sources': [
       '<(skia_include_path)/gpu/GrAARectRenderer.h',
+      '<(skia_include_path)/gpu/GrBackendEffectFactory.h',
       '<(skia_include_path)/gpu/GrCacheID.h',
       '<(skia_include_path)/gpu/GrClipData.h',
       '<(skia_include_path)/gpu/GrColor.h',
@@ -25,7 +26,6 @@
       '<(skia_include_path)/gpu/GrNoncopyable.h',
       '<(skia_include_path)/gpu/GrPaint.h',
       '<(skia_include_path)/gpu/GrPoint.h',
-      '<(skia_include_path)/gpu/GrProgramStageFactory.h',
       '<(skia_include_path)/gpu/GrRect.h',
       '<(skia_include_path)/gpu/GrRefCnt.h',
       '<(skia_include_path)/gpu/GrRenderTarget.h',
@@ -144,6 +144,8 @@
       '<(skia_src_path)/gpu/gl/GrGLCreateNativeInterface_none.cpp',
       '<(skia_src_path)/gpu/gl/GrGLDefaultInterface_none.cpp',
       '<(skia_src_path)/gpu/gl/GrGLDefines.h',
+      '<(skia_src_path)/gpu/gl/GrGLEffect.cpp',
+      '<(skia_src_path)/gpu/gl/GrGLEffect.h',
       '<(skia_src_path)/gpu/gl/GrGLIndexBuffer.cpp',
       '<(skia_src_path)/gpu/gl/GrGLIndexBuffer.h',
       '<(skia_src_path)/gpu/gl/GrGLInterface.cpp',
@@ -152,8 +154,6 @@
       '<(skia_src_path)/gpu/gl/GrGLPath.h',
       '<(skia_src_path)/gpu/gl/GrGLProgram.cpp',
       '<(skia_src_path)/gpu/gl/GrGLProgram.h',
-      '<(skia_src_path)/gpu/gl/GrGLProgramStage.cpp',
-      '<(skia_src_path)/gpu/gl/GrGLProgramStage.h',
       '<(skia_src_path)/gpu/gl/GrGLRenderTarget.cpp',
       '<(skia_src_path)/gpu/gl/GrGLRenderTarget.h',
       '<(skia_src_path)/gpu/gl/GrGLShaderBuilder.cpp',
