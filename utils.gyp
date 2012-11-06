@@ -18,6 +18,15 @@
         '../src/utils',
       ],
       'sources': [
+        # Classes for a threadpool.
+        '../include/utils/SkCondVar.h',
+        '../include/utils/SkCountdown.h',
+        '../include/utils/SkRunnable.h',
+        '../include/utils/SkThreadPool.h',
+        '../src/utils/SkCondVar.cpp',
+        '../src/utils/SkCountdown.cpp',
+        '../src/utils/SkThreadPool.cpp',
+
         '../include/utils/SkBoundaryPatch.h',
         '../include/utils/SkCamera.h',
         '../include/utils/SkCubicInterval.h',
@@ -120,12 +129,6 @@
           ],
         }],
         [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris"]', {
-          'link_settings': {
-            'libraries': [
-              '-lGL',
-              '-lGLU',
-            ],
-          },
           'sources!': [
             '../src/utils/SkThreadUtils_pthread_other.cpp',
           ],
@@ -167,7 +170,7 @@
             '../src/utils/win/SkIStream.cpp',
           ],
         }],
-        [ 'skia_nacl == 1', {
+        [ 'skia_os == "nacl"', {
           'sources': [
             '../src/utils/SkThreadUtils_pthread_other.cpp',
           ],
