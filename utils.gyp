@@ -219,6 +219,15 @@
           '../third_party/externals/cityhash/src',
         ],
       },
+      'conditions': [
+        [ 'skia_os == "mac"', {
+          'xcode_settings': {
+            'OTHER_CPLUSPLUSFLAGS!': [
+              '-Werror',
+            ]
+          },
+        }],
+      ],
     },
   ],
 }

@@ -181,6 +181,9 @@
           ['skia_arch_width == 32', {
             'xcode_settings': {
               'ARCHS': 'i386',
+              'OTHER_CPLUSPLUSFLAGS': [
+                '-Werror',
+              ],
             },
           }],
         ],
