@@ -10,6 +10,7 @@
       'type': 'executable',
       'include_dirs' : [
         '../src/core',
+        '../src/effects',
       ],
       'includes': [
         'bench.gypi'
