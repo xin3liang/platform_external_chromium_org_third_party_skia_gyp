@@ -15,13 +15,14 @@
       'target_name': 'tools',
       'type': 'none',
       'dependencies': [
+        'bench_pictures',
+        'filter',
+        'pinspect',
+        'render_pdfs',
+        'render_pictures',
         'skdiff',
         'skhello',
         'skimage',
-        'render_pictures',
-        'bench_pictures',
-        'pinspect',
-        'filter',
       ],
     },
     {
