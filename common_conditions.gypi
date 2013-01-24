@@ -4,7 +4,6 @@
   'defines': [
     'SK_ALLOW_STATIC_GLOBAL_INITIALIZERS=<(skia_static_initializers)',
 #    'SK_SUPPORT_HINTING_SCALE_FACTOR',
-     'SK_REDEFINE_ROOT2OVER2_TO_MAKE_ARCTOS_CONVEX',
   ],
   'conditions' : [
     ['skia_gpu == 1',
@@ -315,14 +314,6 @@
           '-fno-exceptions',
           '-fno-rtti',
           '-fuse-ld=gold',
-          '--sysroot=<(android_base)/toolchains/<(android_toolchain)/sysroot',
-        ],
-        'include_dirs' : [
-          '<(android_base)/toolchains/<(android_toolchain)/lib/gcc/arm-linux-androideabi/4.6.x-google/include',
-          '<(android_base)/toolchains/<(android_toolchain)/lib/gcc/arm-linux-androideabi/4.6.x-google/include-fixed',
-          '<(android_base)/toolchains/<(android_toolchain)/arm-linux-androideabi/include/c++/4.6',
-          '<(android_base)/toolchains/<(android_toolchain)/arm-linux-androideabi/include/c++/4.6/arm-linux-androideabi',
-          '<(android_base)/toolchains/<(android_toolchain)/sysroot/usr/include',
         ],
         'conditions': [
           [ 'skia_warnings_as_errors == 1', {
@@ -332,11 +323,6 @@
           }],
           [ 'skia_profile_enabled == 1', {
             'cflags': ['-g', '-fno-omit-frame-pointer', '-marm', '-mapcs'],
-          }],
-          [ 'skia_arch_type == "arm"', {
-            'ldflags': [
-              '-Wl',
-            ],
           }],
           [ 'skia_arch_type == "arm" and arm_thumb == 1', {
             'cflags': [
@@ -361,6 +347,10 @@
                 ],
                 'cflags': [
                   '-mfpu=neon',
+                ],
+                'ldflags': [
+                  '-march=armv7-a',
+                  '-Wl,--fix-cortex-a8',
                 ],
               }],
               [ 'arm_neon_optional == 1', {
