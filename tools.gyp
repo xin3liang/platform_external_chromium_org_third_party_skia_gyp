@@ -66,6 +66,8 @@
       'type': 'executable',
       'sources': [
         '../tools/skhello.cpp',
+        '../tools/SkFlags.h',
+        '../tools/SkFlags.cpp',
       ],
       'dependencies': [
         'skia_base_libs.gyp:skia_base_libs',
@@ -113,6 +115,7 @@
       ],
       'include_dirs': [
         '../bench',
+        '../src/lazy/',
       ],
       'dependencies': [
         'skia_base_libs.gyp:skia_base_libs',
@@ -128,8 +131,12 @@
       'sources': [
         '../tools/PictureRenderer.h',
         '../tools/PictureRenderer.cpp',
+        '../tools/PictureRenderingFlags.h',
+        '../tools/PictureRenderingFlags.cpp',
         '../tools/CopyTilesRenderer.h',
         '../tools/CopyTilesRenderer.cpp',
+        '../tools/SkFlags.h',
+        '../tools/SkFlags.cpp',
         '../src/pipe/utils/SamplePipeControllers.h',
         '../src/pipe/utils/SamplePipeControllers.cpp',
       ],
