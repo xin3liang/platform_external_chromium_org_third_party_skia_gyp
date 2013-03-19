@@ -105,7 +105,6 @@
         '<(skia_src_path)/core/SkMath.cpp',
         '<(skia_src_path)/core/SkMatrix.cpp',
         '<(skia_src_path)/core/SkMetaData.cpp',
-        '<(skia_src_path)/core/SkMMapStream.cpp',
         '<(skia_src_path)/core/SkOrderedReadBuffer.cpp',
         '<(skia_src_path)/core/SkOrderedWriteBuffer.cpp',
         '<(skia_src_path)/core/SkPackBits.cpp',
@@ -238,7 +237,6 @@
         '<(skia_include_path)/core/SkMath.h',
         '<(skia_include_path)/core/SkMatrix.h',
         '<(skia_include_path)/core/SkMetaData.h',
-        '<(skia_include_path)/core/SkMMapStream.h',
         '<(skia_include_path)/core/SkOSFile.h',
         '<(skia_include_path)/core/SkPackBits.h',
         '<(skia_include_path)/core/SkPaint.h',
@@ -289,6 +287,7 @@
         '<(skia_include_path)/lazy/SkBitmapFactory.h',
         '<(skia_include_path)/lazy/SkImageCache.h',
         '<(skia_include_path)/lazy/SkLruImageCache.h',
+        '<(skia_include_path)/lazy/SkPurgeableImageCache.h',
 
         '<(skia_src_path)/lazy/SkBitmapFactory.cpp',
         '<(skia_src_path)/lazy/SkLazyPixelRef.h',
@@ -296,6 +295,7 @@
         '<(skia_src_path)/lazy/SkLruImageCache.cpp',
         '<(skia_src_path)/lazy/SkPurgeableMemoryBlock.h',
         '<(skia_src_path)/lazy/SkPurgeableMemoryBlock_common.cpp',
+        '<(skia_src_path)/lazy/SkPurgeableImageCache.cpp',
     ],
 }
 
