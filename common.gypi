@@ -76,18 +76,32 @@
           ],
         },
       }],
+      [ 'skia_win_debuggers_path and skia_os == "win"',
+        {
+          'defines': [
+            'SK_USE_CDB',
+          ],
+        },
+      ],
     ],
     'configurations': {
       'Debug': {
         'defines': [
           'SK_DEBUG',
           'GR_DEBUG=1',
+          'SK_DEVELOPER=1',
         ],
       },
       'Release': {
         'defines': [
           'SK_RELEASE',
           'GR_RELEASE=1',
+        ],
+      },
+      'Release_Developer': {
+        'inherit_from': ['Release'],
+        'defines': [
+          'SK_DEVELOPER=1',
         ],
       },
     },
