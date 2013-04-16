@@ -96,15 +96,30 @@
             '../src/ports/SkImageDecoder_CG.cpp',
           ],
         }],
-        [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris", "nacl"]', {
+        [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris"]', {
+          # Any targets that depend on this target should link in libpng, libgif, and
+          # our code that calls it.
+          # See http://code.google.com/p/gyp/wiki/InputFormatReference#Dependent_Settings
+          'link_settings': {
+            'sources': [
+              '../src/images/SkImageDecoder_libpng.cpp',
+            ],
+            'libraries': [
+              '-lgif',
+              '-lpng',
+              '-lz',
+            ],
+          },
+          # end libpng/libgif stuff
+        }],
+        # FIXME: NaCl should be just like linux, etc, above, but it currently is separated out
+        # to remove gif. Once gif is supported by naclports, this can be merged into the above
+        # condition.
+        [ 'skia_os == "nacl"', {
           'sources!': [
             '../src/images/SkImageDecoder_libgif.cpp',
             '../src/images/SkMovie_gif.cpp',
           ],
-          # libpng stuff:
-          # Any targets that depend on this target should link in libpng and
-          # our code that calls it.
-          # See http://code.google.com/p/gyp/wiki/InputFormatReference#Dependent_Settings
           'link_settings': {
             'sources': [
               '../src/images/SkImageDecoder_libpng.cpp',
@@ -114,7 +129,6 @@
               '-lz',
             ],
           },
-          # end libpng stuff
         }],
         [ 'skia_os == "android"', {
           'include_dirs': [
