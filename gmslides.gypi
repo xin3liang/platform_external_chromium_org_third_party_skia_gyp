@@ -10,6 +10,7 @@
     '../gm/bitmapmatrix.cpp',
     '../gm/bitmapfilters.cpp',
     '../gm/bitmaprect.cpp',
+    '../gm/bitmaprecttest.cpp',
     '../gm/bitmapscroll.cpp',
     '../gm/blend.cpp',
     '../gm/blurs.cpp',
@@ -99,6 +100,7 @@
     '../gm/verttext2.cpp',
     '../gm/verylargebitmap.cpp',
     '../gm/xfermodes.cpp',
+    '../gm/xfermodes2.cpp',
   ],
 }
 
