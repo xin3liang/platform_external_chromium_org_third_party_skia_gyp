@@ -1,5 +1,8 @@
 # include this gypi to include all the golden master slides.
 {
+  'includes': [
+    'pathops.gypi',
+  ],
   'sources': [
     '../gm/aaclip.cpp',
     '../gm/aarectmodes.cpp',
@@ -66,6 +69,7 @@
     '../gm/patheffects.cpp',
     '../gm/pathfill.cpp',
     '../gm/pathinterior.cpp',
+    '../gm/pathopsinverse.cpp',
     '../gm/pathreverse.cpp',
     '../gm/perlinnoise.cpp',
     '../gm/points.cpp',
@@ -74,6 +78,7 @@
     '../gm/rects.cpp',
     '../gm/rrect.cpp',
     '../gm/rrects.cpp',
+    '../gm/roundrects.cpp',
     '../gm/samplerstress.cpp',
     '../gm/shaderbounds.cpp',
     '../gm/selftest.cpp',
