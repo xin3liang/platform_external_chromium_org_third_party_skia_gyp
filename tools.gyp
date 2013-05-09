@@ -82,6 +82,7 @@
         'skia_base_libs.gyp:skia_base_libs',
         'effects.gyp:effects',
         'images.gyp:images',
+        'flags.gyp:flags',
       ],
     },
     {
@@ -282,6 +283,19 @@
             'sources': [
               '../tools/win_dbghelp.h',
               '../tools/win_dbghelp.cpp',
+            ],
+          },
+        ],
+      },
+    ],
+    ['skia_os == "win"',
+      {
+        'targets': [
+          {
+            'target_name': 'win_lcid',
+            'type': 'executable',
+            'sources': [
+              '../tools/win_lcid.cpp',
             ],
           },
         ],
