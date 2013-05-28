@@ -3,6 +3,7 @@
   'sources': [
     '../gm/aaclip.cpp',
     '../gm/aarectmodes.cpp',
+    '../gm/alphagradients.cpp',
     '../gm/arithmode.cpp',
     '../gm/bicubicfilter.cpp',
     '../gm/bigmatrix.cpp',
@@ -45,6 +46,7 @@
     '../gm/giantbitmap.cpp',
     '../gm/gradients.cpp',
     '../gm/gradtext.cpp',
+    '../gm/hairlines.cpp',
     '../gm/hairmodes.cpp',
     '../gm/hittestpath.cpp',
     '../gm/imageblur.cpp',
