@@ -16,11 +16,8 @@
         '../gm/gm_expectations.cpp',
       ],
       'dependencies': [
-        'skia_base_libs.gyp:skia_base_libs',
-        'core.gyp:core',
-        'images.gyp:images',
+        'skia_lib.gyp:skia_lib',
         'jsoncpp.gyp:jsoncpp',
-        'utils.gyp:utils',
       ],
       'direct_dependent_settings': {
         'include_dirs': [
@@ -57,14 +54,11 @@
         '../src/pipe/utils/SamplePipeControllers.cpp',
       ],
       'dependencies': [
-        'skia_base_libs.gyp:skia_base_libs',
-        'effects.gyp:effects',
+        'skia_lib.gyp:skia_lib',
         'flags.gyp:flags',
         'gm.gyp:gm_expectations',
-        'images.gyp:images',
         'jsoncpp.gyp:jsoncpp',
         'pdf.gyp:pdf',
-        'utils.gyp:utils',
       ],
       'conditions': [
         ['skia_os == "mac"', {
