@@ -16,6 +16,7 @@
         'bench_pictures',
         'filter',
         'lua_pictures',
+        'lua_app',
         'pinspect',
         'render_pdfs',
         'render_pictures',
@@ -64,6 +65,7 @@
       ],
       'dependencies': [
         'skia_lib.gyp:skia_lib',
+        'pdf.gyp:pdf',
         'flags.gyp:flags',
       ],
     },
@@ -86,6 +88,23 @@
       ],
     },
     {
+      'target_name': 'lua_app',
+      'type': 'executable',
+      'sources': [
+        '../tools/lua/lua_app.cpp',
+        '../src/utils/SkLua.cpp',
+      ],
+      'dependencies': [
+        'skia_lib.gyp:skia_lib',
+        'effects.gyp:effects',
+        'utils.gyp:utils',
+        'images.gyp:images',
+        'pdf.gyp:pdf',
+        'ports.gyp:ports',
+        'lua.gyp:lua',
+      ],
+    },
+    {
       'target_name': 'lua_pictures',
       'type': 'executable',
       'sources': [
@@ -100,6 +119,7 @@
         'images.gyp:images',
         'tools.gyp:picture_renderer',
         'tools.gyp:picture_utils',
+        'pdf.gyp:pdf',
         'ports.gyp:ports',
         'flags.gyp:flags',
         'lua.gyp:lua',
