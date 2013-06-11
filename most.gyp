@@ -18,6 +18,7 @@
         'tests.gyp:tests',
         'tools.gyp:tools',
         'pathops_unittest.gyp:*',
+#       'pdfviewer.gyp:pdfviewer',
       ],
       'conditions': [
         ['skia_os == "android"', {
