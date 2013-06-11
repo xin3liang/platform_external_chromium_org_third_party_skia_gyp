@@ -6,18 +6,18 @@
       'product_name': 'skia_ports',
       'type': 'static_library',
       'standalone_static_library': 1,
-      'dependencies': [
-        'core.gyp:core',
-        'sfnt.gyp:sfnt',
-        'utils.gyp:utils',
-      ],
       'include_dirs': [
+        '../include/config',
+        '../include/core',
         '../include/effects',
         '../include/images',
         '../include/ports',
+        '../include/utils',
+        '../include/utils/win',
         '../include/xml',
         '../src/core',
         '../src/lazy',
+        '../src/sfnt',
         '../src/utils',
       ],
       'sources': [
@@ -31,7 +31,9 @@
         '../src/ports/SkThread_win.cpp',
 
         '../src/ports/SkMemory_malloc.cpp',
+        '../src/ports/SkOSFile_posix.cpp',
         '../src/ports/SkOSFile_stdio.cpp',
+        '../src/ports/SkOSFile_win.cpp',
         '../src/ports/SkTime_Unix.cpp',
         '../src/ports/SkTime_win.cpp',
         '../src/ports/SkXMLParser_empty.cpp',
@@ -140,12 +142,14 @@
           'sources!': [ # these are used everywhere but windows
             '../src/ports/SkDebug_stdio.cpp',
             '../src/ports/SkTime_Unix.cpp',
+            '../src/ports/SkOSFile_posix.cpp',
           ],
         }, { # else !win
           'sources!': [
             '../src/ports/SkDebug_win.cpp',
             '../src/ports/SkFontHost_win.cpp',
             '../src/ports/SkFontHost_win_dw.cpp',
+            '../src/ports/SkOSFile_win.cpp',
             '../src/ports/SkThread_win.cpp',
             '../src/ports/SkTime_win.cpp',
           ],

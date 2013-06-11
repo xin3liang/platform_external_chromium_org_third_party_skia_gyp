@@ -38,6 +38,21 @@
             'AdditionalDependencies': [
               'OpenGL32.lib',
               'usp10.lib',
+
+              # Prior to gyp r1584, the following were included automatically.
+              'kernel32.lib',
+              'gdi32.lib',
+              'winspool.lib',
+              'comdlg32.lib',
+              'advapi32.lib',
+              'shell32.lib',
+              'ole32.lib',
+              'oleaut32.lib',
+              'user32.lib',
+              'uuid.lib',
+              'odbc32.lib',
+              'odbccp32.lib',
+              'DelayImp.lib',
             ],
           },
         },
@@ -325,6 +340,17 @@
           }],
           [ 'skia_profile_enabled == 1', {
             'cflags': ['-g', '-fno-omit-frame-pointer', '-marm', '-mapcs'],
+          }],
+          [ 'skia_shared_lib', {
+            'cflags': [
+              '-fPIC',
+            ],
+            'defines': [
+              'GR_DLL=1',
+              'GR_IMPLEMENTATION=1',
+              'SKIA_DLL',
+              'SKIA_IMPLEMENTATION=1',
+            ],
           }],
           [ 'skia_arch_type == "arm" and arm_thumb == 1', {
             'cflags': [
