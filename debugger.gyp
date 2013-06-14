@@ -78,6 +78,7 @@
       ],
       'include_dirs' : [
         '../src/core',
+        '../src/utils/debugger',
         '../debugger',      # To pull SkDebugger.h
         '../src/gpu',       # To pull gl/GrGLUtil.h
         '../src/ports',     # To pull SkFontDescriptor.h
@@ -85,13 +86,13 @@
         '../tools',
       ],
       'sources': [
-        '../debugger/SkDebugCanvas.h',
-        '../debugger/SkDebugCanvas.cpp',
         '../debugger/SkDebugger.cpp',
-        '../debugger/SkDrawCommand.h',
-        '../debugger/SkDrawCommand.cpp',
-        '../debugger/SkObjectParser.h',
-        '../debugger/SkObjectParser.cpp',
+        '../src/utils/debugger/SkDebugCanvas.h',
+        '../src/utils/debugger/SkDebugCanvas.cpp',
+        '../src/utils/debugger/SkDrawCommand.h',
+        '../src/utils/debugger/SkDrawCommand.cpp',
+        '../src/utils/debugger/SkObjectParser.h',
+        '../src/utils/debugger/SkObjectParser.cpp',
       ],
       'dependencies': [
         'skia_lib.gyp:skia_lib',
