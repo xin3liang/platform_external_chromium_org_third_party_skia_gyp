@@ -113,6 +113,15 @@
               },
             },
           }],
+          [ 'skia_win_exceptions', {
+            'msvs_settings': {
+              'VCCLCompilerTool': {
+                'AdditionalOptions': [
+                  '/EHsc',
+                ],
+              },
+            },
+          }],
         ],
       },
     ],
@@ -164,7 +173,6 @@
           }],
           [ 'skia_os == "chromeos"', {
             'ldflags': [
-              '--sysroot=/build/<(skia_cros_target)',
               '-lstdc++',
               '-lm',
             ],
