@@ -76,7 +76,7 @@
             'msvs_settings': {
               'VCCLCompilerTool': {
                 'DebugInformationFormat': '3',      # programDatabase (/Zi)
-                'Optimization': '3',                # full (/Ox)
+                'Optimization': '<(skia_release_optimization_level)',
                 'WholeProgramOptimization': 'true', #/GL
                # Changing the floating point model requires rebaseling gm images
                #'FloatingPointModel': '2',          # fast (/fp:fast)
@@ -137,7 +137,10 @@
             'cflags': ['-g']
           },
           'Release': {
-            'cflags': ['-O3 -g'],
+            'cflags': [
+              '-O<(skia_release_optimization_level)',
+              '-g',
+            ],
             'defines': [ 'NDEBUG' ],
           },
         },
@@ -149,6 +152,17 @@
           '-Wno-c++11-extensions'
         ],
         'conditions' : [
+          [ 'skia_shared_lib', {
+            'cflags': [
+              '-fPIC',
+            ],
+            'defines': [
+              'GR_DLL=1',
+              'GR_IMPLEMENTATION=1',
+              'SKIA_DLL',
+              'SKIA_IMPLEMENTATION=1',
+            ],
+          }],
           [ 'skia_warnings_as_errors', {
             'cflags': [
               '-Werror',
@@ -235,7 +249,7 @@
           },
           'Release': {
             'xcode_settings': {
-              'GCC_OPTIMIZATION_LEVEL': '3',
+              'GCC_OPTIMIZATION_LEVEL': '<(skia_release_optimization_level)',
             },
             'defines': [ 'NDEBUG' ],
           },
@@ -301,7 +315,7 @@
           },
           'Release': {
             'xcode_settings': {
-              'GCC_OPTIMIZATION_LEVEL': '3',
+              'GCC_OPTIMIZATION_LEVEL': '<(skia_release_optimization_level)',
             },
             'defines': [ 'NDEBUG' ],
           },
