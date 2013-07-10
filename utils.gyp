@@ -1,3 +1,4 @@
+# Gyp for utils.
 {
   'targets': [
     {
@@ -10,6 +11,8 @@
         '../include/core',
         '../include/effects',
         '../include/images',
+        '../include/lazy',
+        '../include/pathops',
         '../include/pipe',
         '../include/utils',
         '../include/utils/mac',
@@ -80,6 +83,7 @@
         '../src/utils/SkParseColor.cpp',
         '../src/utils/SkParsePath.cpp',
         '../src/utils/SkPictureUtils.cpp',
+        '../src/utils/SkPathUtils.cpp',
         '../src/utils/SkProxyCanvas.cpp',
         '../src/utils/SkSHA1.cpp',
         '../src/utils/SkSHA1.h',

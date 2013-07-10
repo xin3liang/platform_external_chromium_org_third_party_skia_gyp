@@ -12,14 +12,19 @@
   ],
   'targets': [
     {
-      'target_name': 'pdfviewer',
-      'type': 'executable',
+      'target_name': 'libpdfviewer',
+      'type': 'static_library',
       'cflags': ['-fexceptions'],
       'cflags_cc': ['-fexceptions'],
       'cflags!': [ '-fno-exceptions' ],
       'cflags_cc!': [ '-fno-exceptions' ],
       'sources': [
-        '../experimental/PdfViewer/pdf_viewer_main.cpp',
+        '../experimental/PdfViewer/SkPdfBasics.cpp',
+        '../experimental/PdfViewer/SkPdfFont.cpp',
+        '../experimental/PdfViewer/SkPdfParser.cpp',
+        '../experimental/PdfViewer/SkPdfUtils.cpp',
+        '../experimental/PdfViewer/pdfparser/podofo/autogen/SkPdfPodofoMapper_autogen.cpp',
+        '../experimental/PdfViewer/pdfparser/podofo/autogen/SkPdfHeaders_autogen.cpp',
       ],
       'include_dirs': [
         '../third_party/externals/podofo/src/base',
@@ -27,6 +32,11 @@
         '../third_party/externals/podofo',
         '../tools',
         '../experimental/PdfViewer',
+        '../experimental/PdfViewer/pdfparser',
+        '../experimental/PdfViewer/pdfparser/podofo',
+        '../experimental/PdfViewer/pdfparser/podofo/autogen',
+        #'../experimental/PdfViewer/pdfparser/native',
+        #'../experimental/PdfViewer/pdfparser/native/autogen',
       ],
       'dependencies': [
         'core.gyp:core',
@@ -45,21 +55,30 @@
         'BUILDING_PODOFO',
       ],
     },
-  ],
-  'conditions': [
-    ['skia_os == "win"',
-      {
-        'targets': [
-          {
-            'target_name': 'win_lcid',
-            'type': 'executable',
-            'sources': [
-              '../tools/win_lcid.cpp',
-            ],
-          },
-        ],
-      },
-    ],
+    {
+      'target_name': 'pdfviewer',
+      'type': 'executable',
+      'cflags': ['-fexceptions'],
+      'cflags_cc': ['-fexceptions'],
+      'cflags!': [ '-fno-exceptions' ],
+      'cflags_cc!': [ '-fno-exceptions' ],
+      'sources': [
+        '../experimental/PdfViewer/pdf_viewer_main.cpp',
+      ],
+      'include_dirs': [
+        '../third_party/externals/podofo/src/base',
+        '../third_party/externals/podofo/src',
+        '../third_party/externals/podofo',
+        '../tools',
+        '../experimental/PdfViewer',
+        '../experimental/PdfViewer/autogen',
+      ],
+      'dependencies': [
+        'core.gyp:core',
+        'images.gyp:images',
+        'libpdfviewer',
+      ],
+    },
   ],
 }
 
