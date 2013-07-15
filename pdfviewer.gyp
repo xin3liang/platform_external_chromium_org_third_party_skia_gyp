@@ -18,7 +18,7 @@
       'sources': [
         '../experimental/PdfViewer/SkPdfBasics.cpp',
         '../experimental/PdfViewer/SkPdfFont.cpp',
-        '../experimental/PdfViewer/SkPdfParser.cpp',
+        '../experimental/PdfViewer/SkPdfRenderer.cpp',
         '../experimental/PdfViewer/SkPdfUtils.cpp',
         #'../experimental/PdfViewer/SkPdfNYI.cpp',
         '../experimental/PdfViewer/pdfparser/native/SkPdfObject.cpp',
@@ -56,7 +56,6 @@
         },
       ],
       'include_dirs': [
-        '../tools',
         '../experimental/PdfViewer',
         '../experimental/PdfViewer/pdfparser',
         '../experimental/PdfViewer/pdfparser/autogen',
@@ -65,16 +64,9 @@
       ],
       'dependencies': [
         'core.gyp:core',
-        'effects.gyp:effects',
         'images.gyp:images',
-        'pdf.gyp:pdf',
-        'ports.gyp:ports',
-        'tools.gyp:picture_utils',
+        'zlib.gyp:zlib',
       ],
-      'link_settings': {
-        'libraries': [
-        ],
-      },
     },
     {
       'target_name': 'pdfviewer',
@@ -87,7 +79,6 @@
         '../experimental/PdfViewer/pdf_viewer_main.cpp',
       ],
       'include_dirs': [
-        '../tools',
         '../experimental/PdfViewer',
         '../experimental/PdfViewer/pdfparser',
         '../experimental/PdfViewer/pdfparser/autogen',
@@ -96,8 +87,9 @@
       ],
       'dependencies': [
         'core.gyp:core',
-        'images.gyp:images',
+        'flags.gyp:flags',
         'libpdfviewer',
+        'tools.gyp:picture_utils',
       ],
     },
   ],
