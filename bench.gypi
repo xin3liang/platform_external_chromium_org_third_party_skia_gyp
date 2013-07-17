@@ -5,11 +5,11 @@
     '../bench/benchmain.cpp',
     '../bench/SkBenchmark.h',
     '../bench/SkBenchmark.cpp',
-
     '../bench/AAClipBench.cpp',
     '../bench/BicubicBench.cpp',
     '../bench/BitmapBench.cpp',
     '../bench/BitmapRectBench.cpp',
+    '../bench/BitmapScaleBench.cpp',
     '../bench/BlendBench.cpp',
     '../bench/BlurBench.cpp',
     '../bench/BlurImageFilterBench.cpp',

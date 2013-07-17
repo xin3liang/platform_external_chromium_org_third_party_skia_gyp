@@ -17,6 +17,7 @@
         ],
       },
     ],
+
     [ 'skia_os == "win"',
       {
         'defines': [
@@ -126,6 +127,60 @@
       },
     ],
 
+    # The following section is common to linux + derivatives and android
+    [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris", "nacl", "chromeos", "android"]',
+      {
+        'conditions': [
+          [ 'skia_warnings_as_errors', {
+            'cflags': [
+              '-Werror',
+            ],
+          }],
+          [ 'skia_arch_type == "arm" and arm_thumb == 1', {
+            'cflags': [
+              '-mthumb',
+            ],
+          }],
+          [ 'skia_arch_type == "arm" and armv7 == 1', {
+            'variables': {
+              'arm_neon_optional%': 0,
+            },
+            'defines': [
+              '__ARM_ARCH__=7',
+            ],
+            'cflags': [
+              '-march=armv7-a',
+            ],
+            'conditions': [
+              [ 'arm_neon == 1', {
+                'defines': [
+                  '__ARM_HAVE_NEON',
+                ],
+                'cflags': [
+                  '-mfpu=neon',
+                ],
+                'ldflags': [
+                  '-march=armv7-a',
+                  '-Wl,--fix-cortex-a8',
+                ],
+              }],
+              [ 'arm_neon_optional == 1', {
+                'defines': [
+                  '__ARM_HAVE_OPTIONAL_NEON_SUPPORT',
+                ],
+              }],
+              [ 'skia_os != "chromeos"', {
+                'cflags': [
+                  '-mfloat-abi=softfp',
+                ],
+              }],
+            ],
+          }],
+        ],
+      },
+    ],
+
+
     [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris", "nacl", "chromeos"]',
       {
         'defines': [
@@ -163,11 +218,6 @@
               'SKIA_IMPLEMENTATION=1',
             ],
           }],
-          [ 'skia_warnings_as_errors', {
-            'cflags': [
-              '-Werror',
-            ],
-          }],
           [ 'skia_os == "nacl"', {
             'defines': [
               'SK_BUILD_FOR_NACL',
@@ -192,7 +242,7 @@
             ],
           }, {
             'conditions': [
-              [ 'skia_arch_width == 64', {
+              [ 'skia_arch_width == 64 and skia_arch_type == "x86"', {
                 'cflags': [
                   '-m64',
                 ],
@@ -200,7 +250,7 @@
                   '-m64',
                 ],
               }],
-              [ 'skia_arch_width == 32', {
+              [ 'skia_arch_width == 32 and skia_arch_type == "x86"', {
                 'cflags': [
                   '-m32',
                 ],
@@ -208,6 +258,15 @@
                   '-m32',
                 ],
               }],
+            ],
+          }],
+          [ 'skia_asan_build', {
+            'cflags': [
+              '-fsanitize=address',
+              '-fno-omit-frame-pointer',
+            ],
+            'ldflags': [
+              '-fsanitize=address',
             ],
           }],
         ],
@@ -365,14 +424,6 @@
           '-fno-rtti',
         ],
         'conditions': [
-          [ 'skia_warnings_as_errors', {
-            'cflags': [
-              '-Werror',
-            ],
-          }],
-          [ 'skia_profile_enabled == 1', {
-            'cflags': ['-g', '-fno-omit-frame-pointer', '-marm', '-mapcs'],
-          }],
           [ 'skia_shared_lib', {
             'cflags': [
               '-fPIC',
@@ -384,42 +435,9 @@
               'SKIA_IMPLEMENTATION=1',
             ],
           }],
-          [ 'skia_arch_type == "arm" and arm_thumb == 1', {
-            'cflags': [
-              '-mthumb',
-            ],
+          [ 'skia_profile_enabled == 1', {
+            'cflags': ['-g', '-fno-omit-frame-pointer', '-marm', '-mapcs'],
           }],
-          [ 'skia_arch_type == "arm" and armv7 == 1', {
-            'variables': {
-              'arm_neon_optional%': 0,
-            },
-            'defines': [
-              '__ARM_ARCH__=7',
-            ],
-            'cflags': [
-              '-march=armv7-a',
-              '-mfloat-abi=softfp',
-            ],
-            'conditions': [
-              [ 'arm_neon == 1', {
-                'defines': [
-                  '__ARM_HAVE_NEON',
-                ],
-                'cflags': [
-                  '-mfpu=neon',
-                ],
-                'ldflags': [
-                  '-march=armv7-a',
-                  '-Wl,--fix-cortex-a8',
-                ],
-              }],
-              [ 'arm_neon_optional == 1', {
-                'defines': [
-                  '__ARM_HAVE_OPTIONAL_NEON_SUPPORT',
-                ],
-              }],
-            ],
-         }],
         ],
       },
     ],

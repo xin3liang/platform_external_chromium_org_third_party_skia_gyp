@@ -4,9 +4,6 @@
 #  ./gyp_skia pdfviewer.gyp && make pdfviewer
 #
 {
-  'variables': {
-    'skia_warnings_as_errors': 0,
-  },
   'includes': [
     'apptype_console.gypi',
   ],
@@ -21,38 +18,54 @@
       'sources': [
         '../experimental/PdfViewer/SkPdfBasics.cpp',
         '../experimental/PdfViewer/SkPdfFont.cpp',
-        '../experimental/PdfViewer/SkPdfParser.cpp',
+        '../experimental/PdfViewer/SkPdfRenderer.cpp',
         '../experimental/PdfViewer/SkPdfUtils.cpp',
-        '../experimental/PdfViewer/pdfparser/podofo/autogen/SkPdfPodofoMapper_autogen.cpp',
-        '../experimental/PdfViewer/pdfparser/podofo/autogen/SkPdfHeaders_autogen.cpp',
+        #'../experimental/PdfViewer/SkPdfNYI.cpp',
+        '../experimental/PdfViewer/pdfparser/native/SkPdfObject.cpp',
+        '../experimental/PdfViewer/pdfparser/native/SkPdfNativeTokenizer.cpp',
+        '../experimental/PdfViewer/pdfparser/native/SkNativeParsedPDF.cpp',
+        '../experimental/PdfViewer/pdfparser/native/autogen/SkPdfMapper_autogen.cpp',
+        '../experimental/PdfViewer/pdfparser/native/autogen/SkPdfHeaders_autogen.cpp',
+      ],
+      'actions': [
+        {
+          'action_name': 'spec2def',
+          'inputs': [
+            '../experimental/PdfViewer/spec2def.py',
+            '../experimental/PdfViewer/PdfReference-okular-1.txt',
+          ],
+          'outputs': [
+            '../experimental/PdfViewer/autogen/pdfspec_autogen.py',
+          ],
+          'action': ['python', '../experimental/PdfViewer/spec2def.py', '../experimental/PdfViewer/PdfReference-okular-1.txt', '../experimental/PdfViewer/autogen/pdfspec_autogen.py'],
+        },
+        {
+          'action_name': 'generate_code',
+          'inputs': [
+            '../experimental/PdfViewer/generate_code.py',
+            '../experimental/PdfViewer/autogen/pdfspec_autogen.py',
+          ],
+          'outputs': [
+            '../experimental/PdfViewer/pdfparser/autogen/SkPdfEnums_autogen.h',
+            '../experimental/PdfViewer/pdfparser/native/autogen/SkPdfMapper_autogen.cpp',
+            '../experimental/PdfViewer/pdfparser/native/autogen/SkPdfHeaders_autogen.cpp',
+            # TODO(edisonn): ok, there are many more files here, which we should list but since
+            # any change in the above should trigger a change here, we should be fine normally
+          ],
+          'action': ['python', '../experimental/PdfViewer/generate_code.py', '../experimental/PdfViewer/pdfparser/'],
+        },
       ],
       'include_dirs': [
-        '../third_party/externals/podofo/src/base',
-        '../third_party/externals/podofo/src',
-        '../third_party/externals/podofo',
-        '../tools',
         '../experimental/PdfViewer',
         '../experimental/PdfViewer/pdfparser',
-        '../experimental/PdfViewer/pdfparser/podofo',
-        '../experimental/PdfViewer/pdfparser/podofo/autogen',
-        #'../experimental/PdfViewer/pdfparser/native',
-        #'../experimental/PdfViewer/pdfparser/native/autogen',
+        '../experimental/PdfViewer/pdfparser/autogen',
+        '../experimental/PdfViewer/pdfparser/native',
+        '../experimental/PdfViewer/pdfparser/native/autogen',
       ],
       'dependencies': [
         'core.gyp:core',
-        'effects.gyp:effects',
         'images.gyp:images',
-        'pdf.gyp:pdf',
-        'ports.gyp:ports',
-        'tools.gyp:picture_utils',
-        '../third_party/externals/podofo/podofo.gyp:podofo',
-      ],
-      'link_settings': {
-        'libraries': [
-        ],
-      },
-      'defines': [
-        'BUILDING_PODOFO',
+        'zlib.gyp:zlib',
       ],
     },
     {
@@ -66,17 +79,17 @@
         '../experimental/PdfViewer/pdf_viewer_main.cpp',
       ],
       'include_dirs': [
-        '../third_party/externals/podofo/src/base',
-        '../third_party/externals/podofo/src',
-        '../third_party/externals/podofo',
-        '../tools',
         '../experimental/PdfViewer',
-        '../experimental/PdfViewer/autogen',
+        '../experimental/PdfViewer/pdfparser',
+        '../experimental/PdfViewer/pdfparser/autogen',
+        '../experimental/PdfViewer/pdfparser/native',
+        '../experimental/PdfViewer/pdfparser/native/autogen',
       ],
       'dependencies': [
         'core.gyp:core',
-        'images.gyp:images',
+        'flags.gyp:flags',
         'libpdfviewer',
+        'tools.gyp:picture_utils',
       ],
     },
   ],
