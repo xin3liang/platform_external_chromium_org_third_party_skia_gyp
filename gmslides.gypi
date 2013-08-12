@@ -20,6 +20,7 @@
     '../gm/blurquickreject.cpp',
     '../gm/blurrect.cpp',
     '../gm/circles.cpp',
+    '../gm/circularclips.cpp',
     '../gm/colorfilterimagefilter.cpp',
     '../gm/colormatrix.cpp',
     '../gm/colortype.cpp',
@@ -28,6 +29,7 @@
     '../gm/composeshader.cpp',
     #'../gm/conicpaths.cpp',
     '../gm/convexpaths.cpp',
+    '../gm/copyTo4444.cpp',
     '../gm/cubicpaths.cpp',
     '../gm/cmykjpeg.cpp',
     '../gm/degeneratesegments.cpp',
@@ -125,6 +127,7 @@
     '../gm/xfermodeimagefilter.cpp',
     '../gm/xfermodes.cpp',
     '../gm/xfermodes2.cpp',
+    '../gm/xfermodes3.cpp',
   ],
 }
 
