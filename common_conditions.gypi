@@ -229,8 +229,6 @@
               '-fPIC',
             ],
             'defines': [
-              'GR_DLL=1',
-              'GR_IMPLEMENTATION=1',
               'SKIA_DLL',
               'SKIA_IMPLEMENTATION=1',
             ],
@@ -247,13 +245,15 @@
                 '-pthread',
               ],
             },
+          }, { # skia_os != "nacl"
+            'link_settings': {
+              'ldflags': [
+                '-lstdc++',
+                '-lm',
+              ],
+            },
           }],
-          [ 'skia_os == "chromeos"', {
-            'ldflags': [
-              '-lstdc++',
-              '-lm',
-            ],
-          }, {
+          [ 'skia_os != "chromeos"', {
             'conditions': [
               [ 'skia_arch_width == 64 and skia_arch_type == "x86"', {
                 'cflags': [
@@ -454,8 +454,6 @@
               '-fPIC',
             ],
             'defines': [
-              'GR_DLL=1',
-              'GR_IMPLEMENTATION=1',
               'SKIA_DLL',
               'SKIA_IMPLEMENTATION=1',
             ],
