@@ -22,6 +22,7 @@
       ],
       'sources': [
         '../tests/AAClipTest.cpp',
+        '../tests/AndroidPaintTest.cpp',
         '../tests/AnnotationTest.cpp',
         '../tests/ARGBImageEncoderTest.cpp',
         '../tests/AtomicTest.cpp',
@@ -61,6 +62,7 @@
         '../tests/FontHostTest.cpp',
         '../tests/FontMgrTest.cpp',
         '../tests/FontNamesTest.cpp',
+        '../tests/FrontBufferedStreamTest.cpp',
         '../tests/GeometryTest.cpp',
         '../tests/GLInterfaceValidation.cpp',
         '../tests/GLProgramsTest.cpp',
