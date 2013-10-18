@@ -22,6 +22,7 @@
       ],
       'sources': [
         '../tests/AAClipTest.cpp',
+        '../tests/AndroidPaintTest.cpp',
         '../tests/AnnotationTest.cpp',
         '../tests/ARGBImageEncoderTest.cpp',
         '../tests/AtomicTest.cpp',
@@ -61,7 +62,9 @@
         '../tests/FontHostTest.cpp',
         '../tests/FontMgrTest.cpp',
         '../tests/FontNamesTest.cpp',
+        '../tests/FrontBufferedStreamTest.cpp',
         '../tests/GeometryTest.cpp',
+        '../tests/GifTest.cpp',
         '../tests/GLInterfaceValidation.cpp',
         '../tests/GLProgramsTest.cpp',
         '../tests/GpuBitmapCopyTest.cpp',
@@ -75,6 +78,7 @@
         '../tests/ImageDecodingTest.cpp',
         '../tests/ImageFilterTest.cpp',
         '../tests/InfRectTest.cpp',
+        '../tests/JpegTest.cpp',
         '../tests/LListTest.cpp',
         '../tests/LayerDrawLooperTest.cpp',
         '../tests/MD5Test.cpp',
@@ -85,6 +89,7 @@
         '../tests/MemsetTest.cpp',
         '../tests/MetaDataTest.cpp',
         '../tests/MipMapTest.cpp',
+        '../tests/OnceTest.cpp',
         '../tests/OSPathTest.cpp',
         '../tests/PackBitsTest.cpp',
         '../tests/PaintTest.cpp',
@@ -152,16 +157,6 @@
         [ 'skia_gpu == 1', {
           'include_dirs': [
             '../src/gpu',
-          ],
-        }],
-        [ 'skia_os == "nacl"', {
-          # CityHash is not supported on NaCl because the NaCl toolchain is
-          # missing byteswap.h which is needed by CityHash.
-          # TODO(borenet): Find a way to either provide this dependency or
-          # replace it.
-          'sources!': [
-            '../tests/BitmapHasherTest.cpp',
-            '../tests/ChecksumTest.cpp',
           ],
         }],
       ],

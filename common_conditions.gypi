@@ -32,7 +32,6 @@
         'defines': [
           'SK_BUILD_FOR_WIN32',
           'SK_FONTHOST_USES_FONTMGR',
-          'SK_IGNORE_STDINT_DOT_H',
           '_CRT_SECURE_NO_WARNINGS',
           'GR_GL_FUNCTION_TYPE=__stdcall',
         ],
@@ -277,17 +276,31 @@
               }],
             ],
           }],
-          [ 'skia_asan_build', {
+          # Enable asan, tsan, etc.
+          [ 'skia_sanitizer', {
             'cflags': [
-              '-fsanitize=address',
+              '-fsanitize=<(skia_sanitizer)',
               '-fno-omit-frame-pointer',
             ],
             'ldflags': [
-              '-fsanitize=address',
+              '-fsanitize=<(skia_sanitizer)',
+            ],
+            'conditions' : [
+              [ 'skia_sanitizer == "thread"', {
+                'defines': [ 'DYNAMIC_ANNOTATIONS_ENABLED=1' ],
+                'cflags': [ '-fPIC' ],
+                'target_conditions': [
+                  [ '_type == "executable"', {
+                    'cflags': [ '-fPIE' ],
+                    'ldflags': [ '-pie' ],
+                  }],
+                ],
+              }],
             ],
           }],
           [ 'skia_clang_build', {
             'cflags': [
+              # Extra warnings we like but that only Clang knows about.
               '-Wstring-conversion',
             ],
           }],
