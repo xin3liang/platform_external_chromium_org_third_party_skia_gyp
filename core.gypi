@@ -114,6 +114,7 @@
         '<(skia_src_path)/core/SkMaskGamma.h',
         '<(skia_src_path)/core/SkMath.cpp',
         '<(skia_src_path)/core/SkMatrix.cpp',
+        '<(skia_src_path)/core/SkMessageBus.h',
         '<(skia_src_path)/core/SkMetaData.cpp',
         '<(skia_src_path)/core/SkMipMap.cpp',
         '<(skia_src_path)/core/SkOnce.h',
@@ -195,6 +196,7 @@
         '<(skia_src_path)/core/SkTypefaceCache.h',
         '<(skia_src_path)/core/SkUnPreMultiply.cpp',
         '<(skia_src_path)/core/SkUtils.cpp',
+        '<(skia_src_path)/core/SkValidatingReadBuffer.cpp',
         '<(skia_src_path)/core/SkWriter32.cpp',
         '<(skia_src_path)/core/SkXfermode.cpp',
 
