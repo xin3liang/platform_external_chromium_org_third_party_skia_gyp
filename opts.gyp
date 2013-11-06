@@ -51,6 +51,7 @@
             '../src/opts/SkBitmapFilter_opts_SSE2.cpp',
             '../src/opts/SkBlitRow_opts_SSE2.cpp',
             '../src/opts/SkBlitRect_opts_SSE2.cpp',
+            '../src/opts/SkMorphology_opts_SSE2.cpp',
             '../src/opts/SkUtils_opts_SSE2.cpp',
             '../src/opts/SkXfermode_opts_none.cpp',
           ],
@@ -77,6 +78,7 @@
             '../src/opts/SkBlitMask_opts_arm.cpp',
             '../src/opts/SkBlitRow_opts_arm.cpp',
             '../src/opts/SkBlitRow_opts_arm.h',
+            '../src/opts/SkMorphology_opts_none.cpp',
             '../src/opts/SkXfermode_opts_arm.cpp',
           ],
           'conditions': [
@@ -100,6 +102,7 @@
             '../src/opts/SkBitmapProcState_opts_none.cpp',
             '../src/opts/SkBlitMask_opts_none.cpp',
             '../src/opts/SkBlitRow_opts_none.cpp',
+            '../src/opts/SkMorphology_opts_none.cpp',
             '../src/opts/SkUtils_opts_none.cpp',
             '../src/opts/SkXfermode_opts_none.cpp',
           ],
