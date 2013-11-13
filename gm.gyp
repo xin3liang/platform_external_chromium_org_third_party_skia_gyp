@@ -60,6 +60,17 @@
         'pdf.gyp:pdf',
       ],
       'conditions': [
+        ['skia_run_pdfviewer_in_gm', {
+          'defines': [
+            'SK_BUILD_NATIVE_PDF_RENDERER',
+          ],
+          'include_dirs' : [
+            '../experimental/PdfViewer',
+          ],
+          'dependencies': [
+            'pdfviewer_lib.gyp:pdfviewer_lib',
+          ],
+        }],
         ['skia_os in ["linux", "mac", "win"]', {
           'dependencies': [
             'poppler.gyp:libpoppler-cpp-gpl',

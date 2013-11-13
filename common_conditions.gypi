@@ -27,11 +27,21 @@
         ],
       },
     ],
+    [ 'skia_distancefield_fonts == 1',
+      {
+        'defines': [
+          'SK_DISTANCEFIELD_FONTS=1',
+        ],
+      }, {
+        'defines': [
+          'SK_DISTANCEFIELD_FONTS=0',
+        ],
+      },
+    ],
     [ 'skia_os == "win"',
       {
         'defines': [
           'SK_BUILD_FOR_WIN32',
-          'SK_FONTHOST_USES_FONTMGR',
           '_CRT_SECURE_NO_WARNINGS',
           'GR_GL_FUNCTION_TYPE=__stdcall',
         ],
@@ -317,7 +327,6 @@
         },
         'defines': [
           'SK_BUILD_FOR_MAC',
-          'SK_FONTHOST_USES_FONTMGR',
         ],
         'conditions' : [
           [ 'skia_arch_width == 64', {
@@ -448,6 +457,7 @@
       {
         'defines': [
           'SK_BUILD_FOR_ANDROID',
+          'SK_FONTHOST_DOES_NOT_USE_FONTMGR',
         ],
         'configurations': {
           'Debug': {
