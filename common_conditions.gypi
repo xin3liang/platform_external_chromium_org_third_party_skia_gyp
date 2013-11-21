@@ -3,41 +3,11 @@
 {
   'defines': [
     'SK_ALLOW_STATIC_GLOBAL_INITIALIZERS=<(skia_static_initializers)',
+    'SK_SUPPORT_GPU=<(skia_gpu)',
+    'SK_SUPPORT_OPENCL=<(skia_opencl)',
+    'SK_DISTANCEFIELD_FONTSC=<(skia_distancefield_fonts)',
   ],
   'conditions' : [
-    [ 'skia_gpu == 1',
-      {
-        'defines': [
-          'SK_SUPPORT_GPU=1',
-        ],
-      }, {
-        'defines': [
-          'SK_SUPPORT_GPU=0',
-        ],
-      },
-    ],
-    [ 'skia_opencl == 1',
-      {
-        'defines': [
-          'SK_SUPPORT_OPENCL=1',
-        ],
-      }, {
-        'defines': [
-          'SK_SUPPORT_OPENCL=0',
-        ],
-      },
-    ],
-    [ 'skia_distancefield_fonts == 1',
-      {
-        'defines': [
-          'SK_DISTANCEFIELD_FONTS=1',
-        ],
-      }, {
-        'defines': [
-          'SK_DISTANCEFIELD_FONTS=0',
-        ],
-      },
-    ],
     [ 'skia_os == "win"',
       {
         'defines': [
@@ -149,6 +119,23 @@
     # The following section is common to linux + derivatives and android
     [ 'skia_os in ["linux", "freebsd", "openbsd", "solaris", "nacl", "chromeos", "android"]',
       {
+        'cflags': [
+          '-g',
+          '-fno-exceptions',
+          '-fstrict-aliasing',
+
+          '-Wall',
+          '-Wextra',
+          '-Winit-self',
+          '-Wpointer-arith',
+
+          '-Wno-unused-parameter',
+          '-Wno-c++11-extensions',
+        ],
+        'cflags_cc': [
+          '-fno-rtti',
+          '-Wnon-virtual-dtor',
+        ],
         'conditions': [
           [ 'skia_warnings_as_errors', {
             'cflags': [
@@ -215,27 +202,18 @@
         ],
         'configurations': {
           'Coverage': {
-            'cflags': ['-g --coverage'],
+            'cflags': ['--coverage'],
             'ldflags': ['--coverage'],
           },
           'Debug': {
-            'cflags': ['-g']
           },
           'Release': {
             'cflags': [
               '-O<(skia_release_optimization_level)',
-              '-g',
             ],
             'defines': [ 'NDEBUG' ],
           },
         },
-        'cflags': [
-          '-Wall',
-          '-Wextra',
-          # suppressions below here were added for clang
-          '-Wno-unused-parameter',
-          '-Wno-c++11-extensions',
-        ],
         'conditions' : [
           [ 'skia_shared_lib', {
             'cflags': [
@@ -474,13 +452,7 @@
           '-llog',
         ],
         'cflags': [
-          '-Wall',
-          '-fno-exceptions',
-          '-fstrict-aliasing',
           '-fuse-ld=gold',
-        ],
-        'cflags_cc': [
-          '-fno-rtti',
         ],
         'conditions': [
           [ 'skia_shared_lib', {
