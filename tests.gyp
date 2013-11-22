@@ -12,11 +12,16 @@
         '../src/effects',
         '../src/image',
         '../src/lazy',
+        '../src/images',
         '../src/pathops',
         '../src/pdf',
         '../src/pipe/utils',
         '../src/utils',
         '../tools/',
+
+        # Needed for TDStackNesterTest.
+        '../experimental/PdfViewer',
+        '../experimental/PdfViewer/src',
       ],
       'includes': [
         'pathops_unittest.gypi',
@@ -151,6 +156,9 @@
         '../tests/WritePixelsTest.cpp',
         '../tests/Writer32Test.cpp',
         '../tests/XfermodeTest.cpp',
+
+        '../experimental/PdfViewer/src/SkTDStackNester.h',
+        '../tests/TDStackNesterTest.cpp',
 
         # Needed for PipeTest.
         '../src/pipe/utils/SamplePipeControllers.cpp',

@@ -11,8 +11,13 @@
       'sources': [
         # FIXME: Include directory is named "inc" (instead of "include") in
         # order to not be considered the public API.
+        '../experimental/PdfViewer/inc/SkPdfContext.h',
         '../experimental/PdfViewer/inc/SkPdfRenderer.h',
+        '../experimental/PdfViewer/inc/SkPdfTokenLooper.h',
+
+        '../experimental/PdfViewer/src/SkPdfContext.cpp',
         '../experimental/PdfViewer/src/SkPdfRenderer.cpp',
+        '../experimental/PdfViewer/src/SkTDStackNester.h',
 
         '../experimental/PdfViewer/SkPdfGraphicsState.cpp',
         '../experimental/PdfViewer/SkPdfFont.cpp',
@@ -30,6 +35,7 @@
       'include_dirs': [
         '../experimental/PdfViewer',
         '../experimental/PdfViewer/inc',
+        '../experimental/PdfViewer/src',
         '../experimental/PdfViewer/pdfparser',
         '../experimental/PdfViewer/pdfparser/native',
         '../experimental/PdfViewer/pdfparser/native/pdfapi',
