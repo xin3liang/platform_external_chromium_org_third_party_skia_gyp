@@ -73,6 +73,7 @@
         '<(skia_src_path)/core/SkDevice.cpp',
         '<(skia_src_path)/core/SkDeviceLooper.cpp',
         '<(skia_src_path)/core/SkDeviceProfile.cpp',
+        '<(skia_src_path)/lazy/SkDiscardablePixelRef.cpp',
         '<(skia_src_path)/core/SkDither.cpp',
         '<(skia_src_path)/core/SkDraw.cpp',
         '<(skia_src_path)/core/SkDrawLooper.cpp',
@@ -219,7 +220,6 @@
 
         '<(skia_include_path)/core/Sk64.h',
         '<(skia_include_path)/core/SkAdvancedTypefaceMetrics.h',
-        '<(skia_include_path)/core/SkAlpha.h',
         '<(skia_include_path)/core/SkBitmap.h',
         '<(skia_include_path)/core/SkBitmapDevice.h',
         '<(skia_include_path)/core/SkBlitRow.h',
@@ -255,6 +255,7 @@
         '<(skia_include_path)/core/SkImageEncoder.h',
         '<(skia_include_path)/core/SkImageFilter.h',
         '<(skia_include_path)/core/SkImageFilterUtils.h',
+        '<(skia_include_path)/core/SkImageInfo.h',
         '<(skia_include_path)/core/SkInstCnt.h',
         '<(skia_include_path)/core/SkMallocPixelRef.h',
         '<(skia_include_path)/core/SkMask.h',
@@ -321,6 +322,11 @@
         '<(skia_src_path)/lazy/SkPurgeableMemoryBlock.h',
         '<(skia_src_path)/lazy/SkPurgeableMemoryBlock_common.cpp',
         '<(skia_src_path)/lazy/SkPurgeableImageCache.cpp',
+
+        '<(skia_src_path)/lazy/SkCachingPixelRef.cpp',
+        '<(skia_src_path)/lazy/SkCachingPixelRef.h',
+        '<(skia_src_path)/lazy/SkLazyCachingPixelRef.cpp',
+        '<(skia_src_path)/lazy/SkLazyCachingPixelRef.h',
 
         # Path ops
         '<(skia_include_path)/pathops/SkPathOps.h',
