@@ -33,6 +33,7 @@
         '../bench/ChromeBench.cpp',
         '../bench/CmapBench.cpp',
         '../bench/ColorFilterBench.cpp',
+        '../bench/ColorPrivBench.cpp',
         '../bench/CoverageBench.cpp',
         '../bench/DashBench.cpp',
         '../bench/DecodeBench.cpp',
@@ -162,9 +163,3 @@
     }
   ],
 }
-
-# Local Variables:
-# tab-width:2
-# indent-tabs-mode:nil
-# End:
-# vim: set expandtab tabstop=2 shiftwidth=2:
