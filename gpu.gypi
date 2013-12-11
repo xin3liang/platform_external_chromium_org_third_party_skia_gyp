@@ -141,8 +141,8 @@
       '<(skia_src_path)/gpu/effects/GrSimpleTextureEffect.h',
       '<(skia_src_path)/gpu/effects/GrSingleTextureEffect.cpp',
       '<(skia_src_path)/gpu/effects/GrSingleTextureEffect.h',
-      '<(skia_src_path)/gpu/effects/GrTextureDomainEffect.cpp',
-      '<(skia_src_path)/gpu/effects/GrTextureDomainEffect.h',
+      '<(skia_src_path)/gpu/effects/GrTextureDomain.cpp',
+      '<(skia_src_path)/gpu/effects/GrTextureDomain.h',
       '<(skia_src_path)/gpu/effects/GrTextureStripAtlas.cpp',
       '<(skia_src_path)/gpu/effects/GrTextureStripAtlas.h',
 

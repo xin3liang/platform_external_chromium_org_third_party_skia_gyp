@@ -20,6 +20,8 @@
     '../gm/bitmaprect.cpp',
     '../gm/bitmaprecttest.cpp',
     '../gm/bitmapscroll.cpp',
+    '../gm/bitmapshader.cpp',
+    '../gm/bitmapsource.cpp',
     '../gm/bleed.cpp',
     '../gm/blurs.cpp',
     '../gm/blurquickreject.cpp',
