@@ -33,7 +33,6 @@
         '../tests/ARGBImageEncoderTest.cpp',
         '../tests/AtomicTest.cpp',
         '../tests/BitmapCopyTest.cpp',
-        '../tests/BitmapFactoryTest.cpp',
         '../tests/BitmapGetColorTest.cpp',
         '../tests/BitmapHasherTest.cpp',
         '../tests/BitmapHeapTest.cpp',
@@ -50,11 +49,14 @@
         '../tests/ClipStackTest.cpp',
         '../tests/ClipperTest.cpp',
         '../tests/ColorFilterTest.cpp',
+        '../tests/ColorPrivTest.cpp',
         '../tests/ColorTest.cpp',
         '../tests/DataRefTest.cpp',
         '../tests/DeferredCanvasTest.cpp',
         '../tests/DequeTest.cpp',
         '../tests/DeviceLooperTest.cpp',
+        '../tests/DiscardableMemoryPool.cpp',
+        '../tests/DiscardableMemoryTest.cpp',
         '../tests/DocumentTest.cpp',
         '../tests/DrawBitmapRectTest.cpp',
         '../tests/DrawPathTest.cpp',
@@ -83,6 +85,7 @@
         '../tests/GradientTest.cpp',
         '../tests/GrMemoryPoolTest.cpp',
         '../tests/GrSurfaceTest.cpp',
+        '../tests/GrUnitTests.cpp',
         '../tests/HashCacheTest.cpp',
         '../tests/ImageCacheTest.cpp',
         '../tests/ImageDecodingTest.cpp',
@@ -180,9 +183,3 @@
     },
   ],
 }
-
-# Local Variables:
-# tab-width:2
-# indent-tabs-mode:nil
-# End:
-# vim: set expandtab tabstop=2 shiftwidth=2:

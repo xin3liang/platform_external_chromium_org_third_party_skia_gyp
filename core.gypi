@@ -14,7 +14,6 @@
         '<(skia_src_path)/core/SkAdvancedTypefaceMetrics.cpp',
         '<(skia_src_path)/core/SkAlphaRuns.cpp',
         '<(skia_src_path)/core/SkAntiRun.h',
-        '<(skia_src_path)/core/SkBBoxHierarchy.cpp',
         '<(skia_src_path)/core/SkBBoxHierarchy.h',
         '<(skia_src_path)/core/SkBBoxRecord.cpp',
         '<(skia_src_path)/core/SkBBoxRecord.h',
@@ -44,7 +43,6 @@
         '<(skia_src_path)/core/SkBlitRow_D32.cpp',
         '<(skia_src_path)/core/SkBlitter.h',
         '<(skia_src_path)/core/SkBlitter.cpp',
-        '<(skia_src_path)/core/SkBlitter_A1.cpp',
         '<(skia_src_path)/core/SkBlitter_A8.cpp',
         '<(skia_src_path)/core/SkBlitter_ARGB32.cpp',
         '<(skia_src_path)/core/SkBlitter_RGB16.cpp',
@@ -73,6 +71,7 @@
         '<(skia_src_path)/core/SkDevice.cpp',
         '<(skia_src_path)/core/SkDeviceLooper.cpp',
         '<(skia_src_path)/core/SkDeviceProfile.cpp',
+        '<(skia_src_path)/lazy/SkDiscardableMemoryPool.cpp',
         '<(skia_src_path)/lazy/SkDiscardablePixelRef.cpp',
         '<(skia_src_path)/core/SkDither.cpp',
         '<(skia_src_path)/core/SkDraw.cpp',
@@ -107,6 +106,7 @@
         '<(skia_src_path)/core/SkInstCnt.cpp',
         '<(skia_src_path)/core/SkImageFilter.cpp',
         '<(skia_src_path)/core/SkImageFilterUtils.cpp',
+        '<(skia_src_path)/core/SkImageInfo.cpp',
         '<(skia_src_path)/core/SkLineClipper.cpp',
         '<(skia_src_path)/core/SkMallocPixelRef.cpp',
         '<(skia_src_path)/core/SkMask.cpp',
@@ -150,7 +150,6 @@
         '<(skia_src_path)/core/SkRasterClip.cpp',
         '<(skia_src_path)/core/SkRasterizer.cpp',
         '<(skia_src_path)/core/SkRect.cpp',
-        '<(skia_src_path)/core/SkRefCnt.cpp',
         '<(skia_src_path)/core/SkRefDict.cpp',
         '<(skia_src_path)/core/SkRegion.cpp',
         '<(skia_src_path)/core/SkRegionPriv.h',
@@ -310,23 +309,8 @@
         '<(skia_include_path)/core/SkXfermode.h',
 
         # Lazy decoding:
-        '<(skia_include_path)/lazy/SkBitmapFactory.h',
-        '<(skia_include_path)/lazy/SkImageCache.h',
-        '<(skia_include_path)/lazy/SkLruImageCache.h',
-        '<(skia_include_path)/lazy/SkPurgeableImageCache.h',
-
-        '<(skia_src_path)/lazy/SkBitmapFactory.cpp',
-        '<(skia_src_path)/lazy/SkLazyPixelRef.h',
-        '<(skia_src_path)/lazy/SkLazyPixelRef.cpp',
-        '<(skia_src_path)/lazy/SkLruImageCache.cpp',
-        '<(skia_src_path)/lazy/SkPurgeableMemoryBlock.h',
-        '<(skia_src_path)/lazy/SkPurgeableMemoryBlock_common.cpp',
-        '<(skia_src_path)/lazy/SkPurgeableImageCache.cpp',
-
         '<(skia_src_path)/lazy/SkCachingPixelRef.cpp',
         '<(skia_src_path)/lazy/SkCachingPixelRef.h',
-        '<(skia_src_path)/lazy/SkLazyCachingPixelRef.cpp',
-        '<(skia_src_path)/lazy/SkLazyCachingPixelRef.h',
 
         # Path ops
         '<(skia_include_path)/pathops/SkPathOps.h',
@@ -385,9 +369,3 @@
         '<(skia_src_path)/pathops/SkReduceOrder.h',
     ],
 }
-
-# Local Variables:
-# tab-width:2
-# indent-tabs-mode:nil
-# End:
-# vim: set expandtab tabstop=2 shiftwidth=2:

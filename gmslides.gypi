@@ -20,6 +20,8 @@
     '../gm/bitmaprect.cpp',
     '../gm/bitmaprecttest.cpp',
     '../gm/bitmapscroll.cpp',
+    '../gm/bitmapshader.cpp',
+    '../gm/bitmapsource.cpp',
     '../gm/bleed.cpp',
     '../gm/blurs.cpp',
     '../gm/blurquickreject.cpp',
@@ -50,6 +52,7 @@
     '../gm/downsamplebitmap.cpp',
     '../gm/drawbitmaprect.cpp',
     '../gm/drawlooper.cpp',
+    '../gm/dropshadowimagefilter.cpp',
     '../gm/extractbitmap.cpp',
     '../gm/emptypath.cpp',
     '../gm/fatpathfill.cpp',
@@ -104,6 +107,7 @@
     '../gm/perlinnoise.cpp',
     '../gm/points.cpp',
     '../gm/poly2poly.cpp',
+    '../gm/polygons.cpp',
     '../gm/quadpaths.cpp',
     '../gm/rects.cpp',
     '../gm/rrect.cpp',
@@ -148,9 +152,3 @@
     '../gm/xfermodes3.cpp',
   ],
 }
-
-# Local Variables:
-# tab-width:2
-# indent-tabs-mode:nil
-# End:
-# vim: set expandtab tabstop=2 shiftwidth=2:

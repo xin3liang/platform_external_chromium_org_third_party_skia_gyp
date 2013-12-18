@@ -297,16 +297,6 @@
       'views/SkOSWindow_Unix.h',
       'views/SkWidget.h',
       'views/SkOSWindow_Win.h',
-      'lazy/SkBitmapFactory.h',
-      'lazy/SkImageCache.h',
-      'lazy/SkPurgeableImageCache.h',
-      'lazy/SkLruImageCache.h',
     ],
   },
 }
-
-# Local Variables:
-# tab-width:2
-# indent-tabs-mode:nil
-# End:
-# vim: set expandtab tabstop=2 shiftwidth=2:

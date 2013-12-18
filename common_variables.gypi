@@ -87,6 +87,7 @@
       'skia_resource_cache_mb_limit%': 0,
       'skia_resource_cache_count_limit%': 0,
       'skia_angle%': 0,
+      'skia_chrome_utils%': 1,
       'skia_directwrite%': 0,
       'skia_gpu%': 1,
       'skia_osx_sdkroot%': '',
@@ -147,6 +148,7 @@
     'skia_angle%': '<(skia_angle)',
     'skia_arch_width%': '<(skia_arch_width)',
     'skia_arch_type%': '<(skia_arch_type)',
+    'skia_chrome_utils%': '<(skia_chrome_utils)',
     'skia_directwrite%': '<(skia_directwrite)',
     'skia_gpu%': '<(skia_gpu)',
     'skia_win_exceptions%': 0,
@@ -166,8 +168,3 @@
     'skia_include_path%': '../include',
   },
 }
-# Local Variables:
-# tab-width:2
-# indent-tabs-mode:nil
-# End:
-# vim: set expandtab tabstop=2 shiftwidth=2:
