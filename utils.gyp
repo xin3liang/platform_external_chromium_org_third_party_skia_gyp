@@ -83,6 +83,7 @@
         '../src/utils/SkMD5.h',
         '../src/utils/SkMeshUtils.cpp',
         '../src/utils/SkNinePatch.cpp',
+        '../src/utils/SkNoSaveLayerCanvas.h',
         '../src/utils/SkNWayCanvas.cpp',
         '../src/utils/SkNullCanvas.cpp',
         '../src/utils/SkOSFile.cpp',
