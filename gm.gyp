@@ -62,6 +62,11 @@
         'pdf.gyp:pdf',
       ],
       'conditions': [
+        ['skia_run_pdfviewer_in_gm or skia_poppler_enabled', {
+          'sources': [
+            '../src/utils/SkPDFRasterizer.cpp',
+          ],
+        }],
         ['skia_run_pdfviewer_in_gm', {
           'defines': [
             'SK_BUILD_NATIVE_PDF_RENDERER',
@@ -73,12 +78,9 @@
             'pdfviewer_lib.gyp:pdfviewer_lib',
           ],
         }],
-        ['skia_os in ["linux", "mac", "win"]', {
+        ['skia_poppler_enabled', {
           'dependencies': [
             'poppler.gyp:libpoppler-cpp-gpl',
-          ],
-          'sources': [
-            '../src/utils/SkPDFRasterizer.cpp',
           ],
           'defines': [
             'SK_BUILD_POPPLER',
