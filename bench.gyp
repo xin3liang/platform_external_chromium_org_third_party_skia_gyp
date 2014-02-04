@@ -71,6 +71,7 @@
         '../bench/PicturePlaybackBench.cpp',
         '../bench/PictureRecordBench.cpp',
         '../bench/PremulAndUnpremulAlphaOpsBench.cpp',
+        '../bench/QuadTreeBench.cpp',
         '../bench/RTreeBench.cpp',
         '../bench/ReadPixBench.cpp',
         '../bench/RectBench.cpp',
@@ -97,6 +98,9 @@
         '../bench/SkBenchLogger.h',
         '../bench/SkBenchmark.cpp',
         '../bench/SkBenchmark.h',
+        '../bench/SkGMBench.cpp',
+        '../bench/SkGMBench.h',
+
         '../bench/benchmain.cpp',
       ],
       'conditions': [
@@ -110,6 +114,9 @@
             ],
           },
         ],
+      ],
+      'includes': [
+        'gmslides.gypi',
       ],
     },
     {
