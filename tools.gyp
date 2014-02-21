@@ -13,17 +13,19 @@
       'target_name': 'tools',
       'type': 'none',
       'dependencies': [
-        'bench_pictures',
-        'filter',
-        'lua_pictures',
         'bbh_shootout',
+        'bench_pictures',
+        'bench_record',
+        'filter',
         'lua_app',
+        'lua_pictures',
         'pinspect',
         'render_pdfs',
         'render_pictures',
         'skdiff',
-        'skpdiff',
         'skhello',
+        'skpdiff',
+        'skpmaker',
         'skimage',
         'test_image_decoder',
       ],
@@ -110,6 +112,20 @@
       ],
     },
     {
+      'target_name': 'skpmaker',
+      'type': 'executable',
+      'sources': [
+        '../tools/skpmaker.cpp',
+      ],
+      'include_dirs': [
+        '../src/core',
+      ],
+      'dependencies': [
+        'flags.gyp:flags',
+        'skia_lib.gyp:skia_lib',
+      ],
+    },
+    {
       'target_name': 'skimagediff',
       'type': 'executable',
       'sources': [
@@ -141,8 +157,8 @@
             '../tools/skhello.cpp',
           ],
           'dependencies': [
-            'pdf.gyp:pdf',
             'flags.gyp:flags',
+            'pdf.gyp:pdf',
           ],
         }],
       ],
@@ -158,10 +174,10 @@
         '../src/utils/',
       ],
       'dependencies': [
-        'skia_lib.gyp:skia_lib',
         'flags.gyp:flags',
         'gm.gyp:gm_expectations',
         'jsoncpp.gyp:jsoncpp',
+        'skia_lib.gyp:skia_lib',
         'utils.gyp:utils',
       ],
     },
@@ -174,13 +190,13 @@
         '../src/utils/SkLua.cpp',
       ],
       'dependencies': [
-        'skia_lib.gyp:skia_lib',
         'effects.gyp:effects',
-        'utils.gyp:utils',
         'images.gyp:images',
+        'lua.gyp:lua',
         'pdf.gyp:pdf',
         'ports.gyp:ports',
-        'lua.gyp:lua',
+        'skia_lib.gyp:skia_lib',
+        'utils.gyp:utils',
       ],
     },
     {
@@ -192,16 +208,16 @@
         '../src/utils/SkLua.cpp',
       ],
       'dependencies': [
-        'skia_lib.gyp:skia_lib',
         'effects.gyp:effects',
-        'utils.gyp:utils',
+        'flags.gyp:flags',
         'images.gyp:images',
+        'lua.gyp:lua',
         'tools.gyp:picture_renderer',
         'tools.gyp:picture_utils',
         'pdf.gyp:pdf',
         'ports.gyp:ports',
-        'flags.gyp:flags',
-        'lua.gyp:lua',
+        'skia_lib.gyp:skia_lib',
+        'utils.gyp:utils',
       ],
     },
     {
@@ -217,10 +233,10 @@
         '../src/pipe/utils/',
       ],
       'dependencies': [
+        'flags.gyp:flags',
         'skia_lib.gyp:skia_lib',
         'tools.gyp:picture_renderer',
         'tools.gyp:picture_utils',
-        'flags.gyp:flags',
       ],
     },
     {
@@ -240,11 +256,21 @@
         '../src/lazy/',
       ],
       'dependencies': [
+        'bench.gyp:bench_timer',
+        'flags.gyp:flags',
         'skia_lib.gyp:skia_lib',
         'tools.gyp:picture_utils',
         'tools.gyp:picture_renderer',
-        'bench.gyp:bench_timer',
+      ],
+    },
+    {
+      'target_name': 'bench_record',
+      'type': 'executable',
+      'sources': ['../tools/bench_record.cpp'],
+      'include_dirs': [ '../src/core/' ],
+      'dependencies': [
         'flags.gyp:flags',
+        'skia_lib.gyp:skia_lib',
       ],
     },
     {
@@ -268,16 +294,27 @@
         '../src/pipe/utils/',
         '../src/utils/',
       ],
+      'direct_dependent_settings': {
+        'include_dirs': [
+          # needed for JSON headers used within PictureRenderer.h
+          '../third_party/externals/jsoncpp-chromium/overrides/include/',
+          '../third_party/externals/jsoncpp/include/',
+        ],
+      },
       'dependencies': [
+        'flags.gyp:flags',
+        'jsoncpp.gyp:jsoncpp',
         'skia_lib.gyp:skia_lib',
         'tools.gyp:picture_utils',
-        'flags.gyp:flags',
       ],
       'conditions': [
         ['skia_gpu == 1',
           {
             'include_dirs' : [
               '../src/gpu',
+            ],
+            'dependencies': [
+              'gputest.gyp:skgputest',
             ],
           },
         ],
@@ -296,8 +333,8 @@
         '../src/utils/',
       ],
       'dependencies': [
-        'skia_lib.gyp:skia_lib',
         'pdf.gyp:pdf',
+        'skia_lib.gyp:skia_lib',
         'tools.gyp:picture_utils',
       ],
       'conditions': [
@@ -359,9 +396,9 @@
         '../tools/pinspect.cpp',
       ],
       'dependencies': [
+        'flags.gyp:flags',
         'skia_lib.gyp:skia_lib',
         'tools.gyp:picture_renderer',
-        'flags.gyp:flags',
       ],
     },
     {
@@ -379,11 +416,11 @@
         '../bench/TimerData.cpp',
       ],
       'dependencies': [
-        'skia_lib.gyp:skia_lib',
         'bench.gyp:bench_timer',
-        'tools.gyp:picture_utils',
-        'tools.gyp:picture_renderer',
         'flags.gyp:flags',
+        'skia_lib.gyp:skia_lib',
+        'tools.gyp:picture_renderer',
+        'tools.gyp:picture_utils',
       ],
     },
     {
