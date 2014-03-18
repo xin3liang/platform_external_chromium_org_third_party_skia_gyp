@@ -5,7 +5,7 @@
     'SK_ALLOW_STATIC_GLOBAL_INITIALIZERS=<(skia_static_initializers)',
     'SK_SUPPORT_GPU=<(skia_gpu)',
     'SK_SUPPORT_OPENCL=<(skia_opencl)',
-    'SK_DISTANCEFIELD_FONTS=<(skia_distancefield_fonts)',
+    'SK_FORCE_DISTANCEFIELD_FONTS=<(skia_force_distancefield_fonts)',
   ],
   'conditions' : [
     [ 'skia_os == "win"',
@@ -130,13 +130,18 @@
           '-Wpointer-arith',
 
           '-Wno-unused-parameter',
-          '-Wno-c++11-extensions',
         ],
         'cflags_cc': [
           '-fno-rtti',
           '-Wnon-virtual-dtor',
         ],
         'conditions': [
+          [ 'skia_android_framework==0', {
+            'cflags': [
+              # This flag is not supported by Android build system.
+              '-Wno-c++11-extensions',
+            ],
+          }],
           [ 'skia_warnings_as_errors', {
             'cflags': [
               '-Werror',
@@ -213,6 +218,13 @@
         '-U_FORTIFY_SOURCE',
         '-D_FORTIFY_SOURCE=1',
       ],
+      'cflags!': [
+        '-g',
+        '-march=armv7-a',
+        '-mthumb',
+        '-mfpu=neon',
+        '-mfloat-abi=softfp',
+      ],
       'defines': [
         'DCT_IFAST_SUPPORTED',
         # using freetype's embolden allows us to adjust fake bold settings at
@@ -259,12 +271,19 @@
             'defines': [
               'SK_BUILD_FOR_NACL',
             ],
+            'variables': {
+              'nacl_sdk_root': '<!(["echo", "${NACL_SDK_ROOT}"])',
+            },
             'link_settings': {
               'libraries': [
                 '-lppapi',
                 '-lppapi_cpp',
                 '-lnosys',
                 '-pthread',
+              ],
+              'ldflags': [
+                '-L<(nacl_sdk_root)/lib/newlib_x86_<(skia_arch_width)/Release',
+                '-L<(nacl_sdk_root)/ports/lib/newlib_x86_<(skia_arch_width)/Release',
               ],
             },
           }, { # skia_os != "nacl"
