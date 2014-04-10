@@ -8,6 +8,12 @@
     'SK_FORCE_DISTANCEFIELD_FONTS=<(skia_force_distancefield_fonts)',
   ],
   'conditions' : [
+    [ 'skia_arch_type == "arm64"', {
+      'cflags': [
+        '-ffp-contract=off',
+      ],
+    }],
+
     [ 'skia_os == "win"',
       {
         'defines': [
@@ -290,6 +296,14 @@
         'SK_DEFAULT_FONT_CACHE_LIMIT   (768 * 1024)',
         'SK_ATOMICS_PLATFORM_H "../../src/ports/SkAtomics_android.h"',
         'SK_MUTEX_PLATFORM_H "../../src/ports/SkMutex_pthread.h"',
+        # FIXME: b/13729784: Need to rework LayerRasterizer.cpp
+        'SK_SUPPORT_LEGACY_LAYERRASTERIZER_API',
+        # Temporary until https:#googleplex-android-review.git.corp.google.com/#/c/442220/
+        # lands.
+        'SK_SUPPORT_LEGACY_GETTOTALCLIP',
+        # Use a better name for kPMColor_SkColorType until
+        # https://code.google.com/p/skia/issues/detail?id=2384 is fixed.
+        'kNative_8888_SkColorType kPMColor_SkColorType',
       ],
     }],
 
@@ -328,7 +342,7 @@
               'SK_BUILD_FOR_NACL',
             ],
             'variables': {
-              'nacl_sdk_root': '<!(["echo", "${NACL_SDK_ROOT}"])',
+              'nacl_sdk_root': '<!(echo ${NACL_SDK_ROOT})',
             },
             'link_settings': {
               'libraries': [
@@ -519,7 +533,7 @@
           },
         },
         'xcode_settings': {
-          'ARCHS': ['armv6', 'armv7'],
+          'ARCHS': ['armv7'],
           'CODE_SIGNING_REQUIRED': 'NO',
           'CODE_SIGN_IDENTITY[sdk=iphoneos*]': '',
           'IPHONEOS_DEPLOYMENT_TARGET': '<(ios_sdk_version)',
