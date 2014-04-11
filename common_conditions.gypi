@@ -301,8 +301,9 @@
         # Temporary until https:#googleplex-android-review.git.corp.google.com/#/c/442220/
         # lands.
         'SK_SUPPORT_LEGACY_GETTOTALCLIP',
-        # Still need to switch Android to the new name for N32.
-        'kNative_8888_SkColorType kN32_SkColorType',
+        # Use a better name for kPMColor_SkColorType until
+        # https://code.google.com/p/skia/issues/detail?id=2384 is fixed.
+        'kNative_8888_SkColorType kPMColor_SkColorType',
       ],
     }],
 
@@ -552,6 +553,14 @@
         'defines': [
           'SK_BUILD_FOR_ANDROID',
           'SK_FONTHOST_DOES_NOT_USE_FONTMGR',
+
+          # Android Text Tuning
+          'SK_GAMMA_EXPONENT=1.4',
+          'SK_GAMMA_CONTRAST=0.0',
+        ],
+        # Android defines a fixed gamma exponent instead of using SRGB
+        'defines!': [
+          'SK_GAMMA_SRGB',
         ],
         'configurations': {
           'Debug': {
