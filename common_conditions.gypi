@@ -274,18 +274,10 @@
         # using freetype's embolden allows us to adjust fake bold settings at
         # draw-time, at which point we know which SkTypeface is being drawn
         'SK_USE_FREETYPE_EMBOLDEN',
-        # Android provides at least FreeType 2.4.0 at runtime.
-        'SK_FONTHOST_FREETYPE_RUNTIME_VERSION 0x020400',
-        # Skia should not use dlopen on Android.
-        'SK_CAN_USE_DLOPEN 0',
         'SK_SFNTLY_SUBSETTER "sample/chromium/font_subsetter.h"',
         # When built as part of the system image we can enable certian non-NDK
         # compliant optimizations.
         'SK_BUILD_FOR_ANDROID_FRAMEWORK',
-        # Android Text Tuning
-        'SK_GAMMA_APPLY_TO_A8',
-        'SK_GAMMA_EXPONENT 1.4',
-        'SK_GAMMA_CONTRAST 0.0',
         # Optimizations for chromium (m30)
         'GR_GL_CUSTOM_SETUP_HEADER "gl/GrGLConfig_chrome.h"',
         'IGNORE_ROT_AA_RECT_OPT',
