@@ -91,6 +91,8 @@
               },
             },
           },
+        },
+        'conditions' : [
           # Gyp's ninja generator depends on these specially named
           # configurations to build 64-bit on Windows.
           # See http://skbug.com/2348
@@ -98,17 +100,22 @@
           # We handle the 64- vs 32-bit variations elsewhere, so I think it's
           # OK for us to just make these inherit non-archwidth-specific
           # configurations without modification.
-          'Debug_x64': {
-            'inherit_from': ['Debug'],
-          },
-          'Release_x64': {
-            'inherit_from': ['Release'],
-          },
-          'Release_Developer_x64': {
-            'inherit_from': ['Release_Developer'],
-          },
-        },
-        'conditions' : [
+          #
+          # See http://skbug.com/2442 : These targets cause problems in the
+          # MSVS build, so only include them if gyp is generating a ninja build.
+          [ '"ninja" in "<!(echo %GYP_GENERATORS%)"', {
+            'configurations': {
+              'Debug_x64': {
+                'inherit_from': ['Debug'],
+              },
+              'Release_x64': {
+                'inherit_from': ['Release'],
+              },
+              'Release_Developer_x64': {
+                'inherit_from': ['Release_Developer'],
+              },
+            },
+          }],
           [ 'skia_arch_width == 64', {
             'msvs_configuration_platform': 'x64',
           }],
@@ -295,6 +302,13 @@
         'SK_SUPPORT_LEGACY_GETTOTALCLIP',
         # Still need to switch Android to the new name for N32.
         'kNative_8888_SkColorType kN32_SkColorType',
+        'SK_SUPPORT_LEGACY_PICTURE_CAN_RECORD',
+        'SK_SUPPORT_DEPRECATED_RECORD_FLAGS',
+        'SK_SUPPORT_LEGACY_DERIVED_PICTURE_CLASSES',
+        'SK_SUPPORT_LEGACY_PICTURE_HEADERS',
+        'SK_SUPPORT_LEGACY_BLURDRAWLOOPERCONSTRUCTORS',
+        # Needed until we fix skbug.com/2440.
+        'SK_SUPPORT_LEGACY_CLIPTOLAYERFLAG',
       ],
     }],
 
