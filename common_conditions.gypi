@@ -31,6 +31,7 @@
             'AdditionalOptions': [ '/MP', ],
           },
           'VCLinkerTool': {
+            'LargeAddressAware': 2,  # 2 means "Yes, please let me use more RAM on 32-bit builds."
             'AdditionalDependencies': [
               'OpenGL32.lib',
               'usp10.lib',
@@ -404,6 +405,16 @@
               [ 'skia_sanitizer == "thread"', {
                 'defines': [ 'DYNAMIC_ANNOTATIONS_ENABLED=1' ],
                 'cflags': [ '-fPIC' ],
+                'target_conditions': [
+                  [ '_type == "executable"', {
+                    'cflags': [ '-fPIE' ],
+                    'ldflags': [ '-pie' ],
+                  }],
+                ],
+              }],
+              [ 'skia_sanitizer == "undefined"', {
+                'cflags': [ '-fPIC' ],
+                'cflags_cc!': ['-fno-rtti'],
                 'target_conditions': [
                   [ '_type == "executable"', {
                     'cflags': [ '-fPIE' ],
